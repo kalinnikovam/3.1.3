@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>Welcome to Index PAGE!</h1>
+
+<input type="button" value="Log in"
+       onclick="window.location.href='/login'">
+<br>
+<div sec:authorize="hasRole('ROLE_USER')">
+<input type="button" value="Info for User"
+            onclick="window.location.href='user'">
+Only for USERS
+</div>
+<br>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <input type="button" value="Info for Admin"
+           onclick="window.location.href='/admin/'">
+    Only for ADMINS
+</div>
+
+<br>
+<input type="button" value="Log out"
+       onclick="window.location.href='/logout'">
+
+
+</body>
+</html>

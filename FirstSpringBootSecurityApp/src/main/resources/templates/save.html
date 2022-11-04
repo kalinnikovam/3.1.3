@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saving user</title>
+</head>
+<body>
+<h1> Saving User </h1>
+
+<form action="#" th:method="POST" th:action="saveUser" th:object="${user}">
+    <p th:text="'User id: ' + ${user.getId()}">ID</p>
+
+    <label for="age">Age: </label>
+    <input type="text" th:field="*{age}" id="age" required/>
+    <br/>
+
+    <label for="username">Username: </label>
+    <input type="text" th:field="*{username}" id="username" required/>
+    <br/>
+
+    <label for="password">Password: </label>
+    <input type="text" th:field="*{password}" id="password" required/>
+    <br/>
+
+    <input type="submit" value="OK">
+
+    <br>
+    <input type="button" value="Log out"
+           onclick="window.location.href='/logout'">
+
+
+</form>
+</body>
+</html>
