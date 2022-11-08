@@ -28,15 +28,19 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void add(User user) {
+//        user.setId((long) (getAllUsers().size() + 1));
         entityManager.persist(user);
     }
 
     @Override
     public void update(Long id, User newUser) {
         User oldUser = getUserById(id);
-        oldUser.setUsername(newUser.getUsername());
+        oldUser.setFirstname(newUser.getFirstname());
+        oldUser.setLastname(newUser.getLastname());
         oldUser.setAge(newUser.getAge());
+        oldUser.setEmail(newUser.getEmail());
         oldUser.setPassword(newUser.getPassword());
+        oldUser.setRoles(newUser.getRoles());
     }
 
     @Override
@@ -47,8 +51,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getUserByUsername(String username) {
         TypedQuery<User> listUser = entityManager.createQuery(
-                "select u from User u where u.username = :username", User.class);
-        listUser.setParameter("username", username);
+                "select u from User u where u.email = :email", User.class);
+        listUser.setParameter("email", username);
         System.out.println(listUser.getResultList());
         return listUser.getResultList();
     }

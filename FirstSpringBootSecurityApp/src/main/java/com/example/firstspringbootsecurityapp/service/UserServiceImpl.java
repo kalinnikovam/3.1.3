@@ -6,6 +6,7 @@ import com.example.firstspringbootsecurityapp.dao.UserDao;
 import com.example.firstspringbootsecurityapp.exception_handling.BadDataException;
 import com.example.firstspringbootsecurityapp.models.User;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,10 +20,11 @@ import java.util.List;
 @Service
 @Transactional
 
-public class UserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService, UserService {
 
     private final UserDao userDao;
 
+    @Autowired
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
